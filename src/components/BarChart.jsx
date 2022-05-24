@@ -22,7 +22,7 @@ const BarChart = (props) => {
   const [names, setNames] = useState([]);
   const [rates, setRates] = useState([]);
   const [ability, setAbility] = useState("");
-  const [averageLine, setAverageLine] = useState();
+//   const [averageLine, setAverageLine] = useState();
 
   useEffect(() => {
     const arrayOfNames = data.map((player) => player.Athlete);

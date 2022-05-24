@@ -1,4 +1,4 @@
-import { Space, Table, Tag } from "antd";
+import {  Table } from "antd";
 import styled from "styled-components";
 const ChartContainer = styled.div`
   display: flex;
@@ -8,7 +8,7 @@ const ChartContainer = styled.div`
   width: 90%;
 `;
 
-const { Column, ColumnGroup } = Table;
+// const { Column, ColumnGroup } = Table;
 
 const TableTemplate = ({ data }) => {
   const columns = [
