@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import Input from "../components/Input";
 import BarChart from "../components/BarChart";
 import Table from "../components/Table";
@@ -21,10 +19,9 @@ const MainContainer = styled.div`
 `;
 
 const Graphs = () => {
-    const data = useSelector((state)=>state.data.data)
     const showGraphs = useSelector((state)=>state.UI.showGraphs)
     console.log(showGraphs);
-  const { height, width } = useWindowDimensions();
+  const {  width } = useWindowDimensions();
   
   return (
     <MainContainer className="App">

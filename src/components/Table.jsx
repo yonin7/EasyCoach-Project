@@ -1,9 +1,10 @@
-import { Table, Typography } from "antd";
+import { Table } from "antd";
+// import { Typography } from "antd";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 // import useWindowDimensions from './hooks/useWindowDimensions';
 
-const { Text } = Typography;
+// const { Text } = Typography;
 
 const ChartContainer = styled.div`
   display: flex;

@@ -1,22 +1,22 @@
 import React from "react";
-import styled from "styled-components";
+// import styled from "styled-components";
 import Dropzone from 'react-dropzone-uploader';
 
-const DropzoneContainer = styled.div`
-    display:flex;
-  background: red;
-  width: 75%;
-  height: 50vh;
-  align-items: center;
-  align-content: center;
-  justify-content: center;
+// const DropzoneContainer = styled.div`
+//     display:flex;
+//   background: red;
+//   width: 75%;
+//   height: 50vh;
+//   align-items: center;
+//   align-content: center;
+//   justify-content: center;
 
-  &:hover {
-    cursor: grab;
-  }
+//   &:hover {
+//     cursor: grab;
+//   }
 
 
-`;
+// `;
 const baseStyle = {
     flex: 1,
     display: 'flex',

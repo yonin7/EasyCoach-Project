@@ -10,7 +10,7 @@ const Input = (props) => {
   const showGraphs = useSelector((state)=>state.UI.showGraphs)
 
   const dispatch = useDispatch();
-  const { height, width } = useWindowDimensions();
+  const {  width } = useWindowDimensions();
 
   const fileUplaodHandler = async (data) => {
     const convert = async (eventFile) => {

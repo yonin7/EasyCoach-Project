@@ -1,4 +1,4 @@
-import { useLocation,useHistory } from 'react-router';
+// import { useLocation,useHistory } from 'react-router';
 
 import styled from "styled-components";
 
@@ -15,8 +15,8 @@ const MainContainer = styled.div`
 `;
 
 const NotFound = () => {
-  const history = useHistory()
-  const location = useLocation()
+  // const history = useHistory()
+  // const location = useLocation()
   return (
     <MainContainer className="App">
         not found
