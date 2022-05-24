@@ -6,6 +6,8 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
+// import useWindowDimensions from "./hooks/useWindowDimensions";
+import { useSelector } from "react-redux";
 
 const ChartContainer = styled.div`
   display: flex;
@@ -13,21 +15,20 @@ const ChartContainer = styled.div`
   justify-content: center;
   align-item: center;
   width: 85%;
-  height:400px;
+  height: 400px;
 `;
 
 const BarChart = (props) => {
-  const { data } = props;
-  console.log(data);
+  const data = useSelector((state) => state.data.data);
+  //   const { data } = props;
   const [names, setNames] = useState([]);
   const [rates, setRates] = useState([]);
-  const [ability, setAbility] = useState("");
-//   const [averageLine, setAverageLine] = useState();
+  const [ability, setAbility] = useState("Athlete");
+  //   const [averageLine, setAverageLine] = useState();
 
   useEffect(() => {
     const arrayOfNames = data.map((player) => player.Athlete);
     const abilityRate = data.map((player) => player[`${ability}`]);
-    console.log(abilityRate);
 
     // const convertedAbility = abilityRate.map((str) => {
     //   if (!str) {
@@ -53,11 +54,11 @@ const BarChart = (props) => {
         type: "column",
         data: rates,
       },
-    //   {
-    //     name: "Average",
-    //     type: "line",
-    //     data: averageLine,
-    //   },
+      //   {
+      //     name: "Average",
+      //     type: "line",
+      //     data: averageLine,
+      //   },
     ],
     options: {
       chart: {
@@ -95,19 +96,39 @@ const BarChart = (props) => {
           opacityTo: 0.85,
         },
       },
+      noData: {
+        text: "Loading...",
+        align: "center",
+        verticalAlign: "middle",
+        offsetX: 0,
+        offsetY: 0,
+        style: {
+          color: "#000000",
+          fontSize: "14px",
+          fontFamily: "Helvetica",
+        },
+      },
+      title:{
+          text: `Athlete's Statistics`,
+          align:'center',
+          margin:20,
+          offsetY:20,
+          style:{
+              fontSize:'25px'
+          }
+      }
     },
   };
 
-  console.log(ability);
   const AbilitySelectorHandler = (e) => {
     const value = e.target.value;
     setAbility(value);
   };
 
   return (
-    <ChartContainer id="chart">
+    <ChartContainer>
       {data && (
-        <Box sx={{ width: "100%", right: 0 }}>
+        <Box sx={{ width: "50%", right: 0, height: "300px" }}>
           <FormControl fullWidth>
             <InputLabel id="demo-simple-select-label">Ability</InputLabel>
             <Select
@@ -130,8 +151,7 @@ const BarChart = (props) => {
         series={barData.series}
         type="bar"
         width="100%"
-        height='100%'
-
+        height="100%"
       />
     </ChartContainer>
   );
