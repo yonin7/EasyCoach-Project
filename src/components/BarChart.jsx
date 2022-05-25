@@ -16,25 +16,27 @@ const BarChart = (props) => {
   const [names, setNames] = useState([]);
   const [rates, setRates] = useState([]);
   const [ability, setAbility] = useState("Athlete");
-  //   const [averageLine, setAverageLine] = useState();
+    const [averageLine, setAverageLine] = useState([]);
 
   useEffect(() => {
     const arrayOfNames = data.map((player) => player.Athlete);
     const abilityRate = data.map((player) => player[`${ability}`]);
 
-    // const convertedAbility = abilityRate.map((str) => {
-    //   if (!str) {
-    //     return parseInt("0");
-    //   }
-    //   return parseInt(str);
-    // });
-    // console.log(convertedAbility);
-    // const averageLineCalculator = convertedAbility.reduce(
-    //   (previousValue, currentValue) => previousValue + currentValue,
-    //   0
-    // );
+    const convertedAbility = abilityRate.map((str) => {
+      if (!str) {
+        return parseInt("0");
+      }
+      return parseInt(str);
+    });
+    console.log(convertedAbility);
+    const averageLineCalculator = convertedAbility.reduce(
+      (previousValue, currentValue) => previousValue + currentValue,
+      0
+    )/convertedAbility.length
+    
+    const newArr =convertedAbility.map((rate)=>parseInt(averageLineCalculator));
 
-    // setAverageLine(averageLineCalculator);
+    setAverageLine(newArr);
     setNames(arrayOfNames);
     setRates(abilityRate);
   }, [data, ability]);
@@ -46,21 +48,19 @@ const BarChart = (props) => {
         type: "column",
         data: rates,
       },
-      //   {
-      //     name: "Average",
-      //     type: "line",
-      //     data: averageLine,
-      //   },
+        {
+          name: "Average",
+          type: "line",
+          data: averageLine,
+        },
     ],
     options: {
       chart: {
         height: 400,
-        type: "bar",
-        zoom: {
-          enabled: false,
-        },
+        type: "line",
+
         foreColor:'red',
-        background: '#b3d0de36',
+        background: '#fff',
         opacityTo:0.6,
       },
       plotOptions: {
@@ -72,24 +72,13 @@ const BarChart = (props) => {
       },
       dataLabels: {
         enabled: false,
+        enabledOnSeries: [1],
       },
       xaxis: {
         categories: names,
         labels: {
           rotate: -45,
         },        
-      },
-      fill: {
-        type: "gradient",
-        gradient: {
-          shade: "light",
-          type: "horizontal",
-          shadeIntensity: 0.25,
-          gradientToColors: undefined,
-          inverseColors: true,
-          opacityFrom: 0.85,
-          opacityTo: 0.85,
-        },
       },
       noData: {
         text: "Loading...",
@@ -145,7 +134,7 @@ const BarChart = (props) => {
       <ReactApexChart
         options={barData.options}
         series={barData.series}
-        type="bar"
+        type="line"
         width="100%"
         height="100%"
       />
