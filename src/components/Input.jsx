@@ -26,7 +26,8 @@ const Input = (props) => {
           dispatch(dataActions.loadData(convertedData));
           dispatch(UIActions.showGraphsToggle(true));
         } catch (error) {
-          console.log(error);
+          dispatch(UIActions.messageHandler(error));
+
         }
       });
   };
