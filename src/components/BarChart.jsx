@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import ReactApexChart from "react-apexcharts";
-import styled from "styled-components";
 import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
@@ -8,15 +7,8 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 // import useWindowDimensions from "./hooks/useWindowDimensions";
 import { useSelector } from "react-redux";
+import {ChartContainer} from './BarChartStyles'
 
-const ChartContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-item: center;
-  width: 85%;
-  height: 400px;
-`;
 
 const BarChart = (props) => {
   const data = useSelector((state) => state.data.data);
@@ -67,12 +59,16 @@ const BarChart = (props) => {
         zoom: {
           enabled: false,
         },
+        foreColor:'red',
+        background: '#b3d0de36',
+        opacityTo:0.6,
       },
       plotOptions: {
         bar: {
           borderRadius: 10,
           columnWidth: "50%",
         },
+
       },
       dataLabels: {
         enabled: false,
@@ -81,9 +77,8 @@ const BarChart = (props) => {
         categories: names,
         labels: {
           rotate: -45,
-        },
+        },        
       },
-
       fill: {
         type: "gradient",
         gradient: {
@@ -103,8 +98,8 @@ const BarChart = (props) => {
         offsetX: 0,
         offsetY: 0,
         style: {
-          color: "#000000",
-          fontSize: "14px",
+            color:'red',
+            fontSize: "14px",
           fontFamily: "Helvetica",
         },
       },
@@ -114,7 +109,8 @@ const BarChart = (props) => {
           margin:20,
           offsetY:20,
           style:{
-              fontSize:'25px'
+              fontSize:'25px',
+              color:'red',
           }
       }
     },

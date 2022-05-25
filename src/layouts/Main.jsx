@@ -20,10 +20,10 @@ const Main = ({ children }) => {
         }}
       >
         <AppBar position="sticky">
-          <Toolbar>
+          <Toolbar style={{backgroundColor:"#8f8aea21"}}>
             <Grid container justifyContent={"space-between"}>
               <Grid item>
-                <Typography variant="h6">EasyCoach Assignment!</Typography>
+                <Typography variant="h6" color={'white'}>EasyCoach Assignment!</Typography>
               </Grid>
               <Grid item>
                 <NavLink to="/">
